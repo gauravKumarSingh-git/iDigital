@@ -1,7 +1,6 @@
 import React from "react";
-import EmployeeData from "../data/EmployeeData";
 
-function ShowEmployee() {
+function ShowEmployee(props) {
   return (
     <div className="my-5 col-6">
       <h4>SHOW ALL EMPLOYEE</h4>
@@ -17,15 +16,15 @@ function ShowEmployee() {
             </th>
           </tr>
         </thead>
-        {EmployeeData.map((data) => (
-          <tbody className="border" key={data.empId}>
+        {props.employees.map((data) => (
+          <tbody className="border" key={data.id}>
             <tr>
-              <td className="border">{data.empId}</td>
-              <td className="border">{data.empName}</td>
-              <td className="border">{data.empSal}</td>
-              <td className="border">{data.empDep}</td>
-              <td className="border">UPDATE</td>
-              <td className="border">DELETE</td>
+              <td className="border">{data.id}</td>
+              <td className="border">{data.name}</td>
+              <td className="border">{data.salary}</td>
+              <td className="border">{data.department}</td>
+              <td className="border"><button className="btn btn-primary" onClick={() => props.setToUpdate(data)}>UPDATE</button></td>
+              <td className="border"><button className="btn btn-danger" onClick={() => props.deleteEmployee(data.id)}>DELETE</button></td>
             </tr>
           </tbody>
         ))}

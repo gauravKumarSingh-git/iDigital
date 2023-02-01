@@ -1,13 +1,12 @@
-import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 
-function AddEmployee(props) {
-  const [data, setData] = new useState({
-    id: "",
-    name: "",
-    salary: "",
-    department: "",
-  });
+function UpdateEmployee(props) {
+  const [data, setData] = useState(props.toUpdate);
+
+  useEffect(() => {
+    setData(props.toUpdate)
+  }, [props.toUpdate])
 
   const changeHandler = (event) => {
     const name = event.target.name;
@@ -16,23 +15,33 @@ function AddEmployee(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const res = `${data.id} ${data.name} ${data.salary} ${data.department}`;
-    alert(res);
-    props.addEmployee(data);
+    props.updateEmployee(data);
     console.log(data);
   };
+
   return (
     <div>
+      <h4>UPDATE EMPLOYEE</h4>
       <form className="col-12 col-md-6" onSubmit={submitHandler}>
-        <p>Angular 2 Operation</p>
-        <h4>ADD AN EMPLOYEE</h4>
         <div>
           <label htmlFor="id">ID</label>
-          <input type="text" name="id" id="id" onChange={changeHandler} />
+          <input
+            type="text"
+            name="id"
+            id="id"
+            value={data.id}
+            onChange={changeHandler}
+          />
         </div>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" onChange={changeHandler} />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={data.name}
+            onChange={changeHandler}
+          />
         </div>
         <div>
           <label htmlFor="salary">Salary</label>
@@ -40,6 +49,7 @@ function AddEmployee(props) {
             type="text"
             name="salary"
             id="salary"
+            value={data.salary}
             onChange={changeHandler}
           />
         </div>
@@ -49,18 +59,18 @@ function AddEmployee(props) {
             type="text"
             name="department"
             id="department"
+            value={data.department}
             onChange={changeHandler}
           />
         </div>
         <div>
-          <button type="submit" className="btn btn-primary">Add Employee</button>
-        </div>
-        <div id="result">
-          {data.id} {data.name} {data.salary} {data.department}
+          <button type="submit" className="btn btn-primary">
+            Update Employee
+          </button>
         </div>
       </form>
     </div>
   );
 }
 
-export default AddEmployee;
+export default UpdateEmployee;
