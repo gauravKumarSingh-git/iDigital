@@ -10,6 +10,12 @@
       "BookTitle": "Complete Reference",
       "BookAuthor": "George P. R Martin",
       "BookYear": 1998
+    },
+    {
+      "BookID": 3,
+      "BookTitle": "The Chamber of Secret",
+      "BookAuthor": "J.K Rowling",
+      "BookYear": 1998
     }
   ]
   

@@ -1,7 +1,6 @@
 import Booklist from "./booklist.json";
-import Table from "ract-bootstrap/Table";
-import Form from "react-bootstrap/Form";
 import { useState } from "react";
+
 const Lab4 = () => {
   const [data, setData] = useState(Booklist);
   const search = (category) => {
@@ -48,7 +47,7 @@ const Lab4 = () => {
   };
   return (
     <div>
-      <Table striped bordered hover size="sm" style={{ color: "grey" }}>
+      <table>
         <thead>
           <tr>
             <th>Book ID</th>
@@ -60,7 +59,7 @@ const Lab4 = () => {
         <tbody>
           <tr>
             <td>
-              <Form.Control
+              <input
                 onChange={() => search("id")}
                 id="ID"
                 type="text"
@@ -68,7 +67,7 @@ const Lab4 = () => {
               />
             </td>
             <td>
-              <Form.Control
+              <input
                 onChange={() => search("title")}
                 id="Title"
                 type="text"
@@ -76,7 +75,7 @@ const Lab4 = () => {
               />
             </td>
             <td>
-              <Form.Control
+              <input
                 onChange={() => search("author")}
                 id="Author"
                 type="text"
@@ -84,7 +83,7 @@ const Lab4 = () => {
               />
             </td>
             <td>
-              <Form.Control
+              <input
                 onChange={() => search("year")}
                 id="Year"
                 type="text"
@@ -103,7 +102,7 @@ const Lab4 = () => {
             );
           })}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };
